@@ -1,0 +1,8 @@
+{
+  "name": "dst-countdown",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
