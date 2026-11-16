@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conto alla rovescia all'ora legale</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Prossimo passaggio all'ora legale a Roma</h1>
+    <p id="switch-date" class="switch-date"></p>
+    <div class="countdown" role="timer" aria-live="off">
+      <div class="unit"><span id="days" class="value">–</span><span class="label">giorni</span></div>
+      <div class="unit"><span id="hours" class="value">–</span><span class="label">ore</span></div>
+      <div class="unit"><span id="minutes" class="value">–</span><span class="label">minuti</span></div>
+      <div class="unit"><span id="seconds" class="value">–</span><span class="label">secondi</span></div>
+    </div>
+  </main>
+  <script src="js/dst.js"></script>
+  <script src="js/countdown.js"></script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dstStart, nextDstStart } from '../js/dst.js';
+import '../js/dst.js';
+
+const { dstStart, nextDstStart } = globalThis.dst;
 
 const utc = (iso) => new Date(iso);
 
