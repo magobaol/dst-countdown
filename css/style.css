@@ -42,6 +42,27 @@ h1 {
   font-weight: 600;
 }
 
+.celebration {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+main.dst-active h1 {
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  font-weight: 500;
+  color: var(--muted);
+}
+
+main.dst-active .value {
+  font-size: clamp(1.4rem, 6vw, 2.2rem);
+}
+
 .switch-date {
   margin: 0 0 2rem;
   color: var(--muted);

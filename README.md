@@ -8,3 +8,14 @@ Il sito si pubblica con GitHub Pages dal branch `main`. L'indirizzo atteso è `h
 
 ## Stack
 HTML, CSS e JavaScript statici: nessuno step di build e nessuna dipendenza runtime.
+
+## Modalità
+- **Fuori dall'ora legale:** conto alla rovescia all'inizio dell'ora legale (ultima domenica di marzo, 01:00 UTC).
+- **Durante l'ora legale:** messaggio di festeggiamento e conto alla rovescia alla fine (ultima domenica di ottobre, 01:00 UTC).
+
+Il passaggio fra le modalità avviene senza ricaricare la pagina. Il parametro `?now=2027-06-01T12:00:00Z` simula l'ora corrente.
+
+## Test
+```
+npm test
+```

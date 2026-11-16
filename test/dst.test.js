@@ -34,3 +34,42 @@ test('anno in cui il 31 marzo è domenica', () => {
 test('anno in cui il 25 marzo è domenica', () => {
   assert.deepEqual(dstStart(2029), utc('2029-03-25T01:00:00Z'));
 });
+
+const { dstEnd, nextDstEnd, isDst } = globalThis.dst;
+
+test('fine dell\'ora legale 2027: 31 ottobre alle 01:00 UTC', () => {
+  assert.deepEqual(dstEnd(2027), utc('2027-10-31T01:00:00Z'));
+});
+
+test('anno in cui il 25 ottobre è domenica', () => {
+  assert.deepEqual(dstEnd(2026), utc('2026-10-25T01:00:00Z'));
+});
+
+test('isDst ai confini dell\'inizio', () => {
+  assert.equal(isDst(utc('2027-03-28T00:59:59Z')), false);
+  assert.equal(isDst(utc('2027-03-28T01:00:00Z')), true);
+  assert.equal(isDst(utc('2027-03-28T01:00:01Z')), true);
+});
+
+test('isDst ai confini della fine', () => {
+  assert.equal(isDst(utc('2027-10-31T00:59:59Z')), true);
+  assert.equal(isDst(utc('2027-10-31T01:00:00Z')), false);
+  assert.equal(isDst(utc('2027-10-31T01:00:01Z')), false);
+});
+
+test('isDst a cavallo del cambio d\'anno e in pieno inverno', () => {
+  assert.equal(isDst(utc('2026-12-31T23:59:59Z')), false);
+  assert.equal(isDst(utc('2027-01-01T00:00:00Z')), false);
+  assert.equal(isDst(utc('2027-06-01T12:00:00Z')), true);
+});
+
+test('nextDstEnd: un secondo prima e un secondo dopo la fine', () => {
+  assert.deepEqual(nextDstEnd(utc('2027-10-31T00:59:59Z')), utc('2027-10-31T01:00:00Z'));
+  assert.deepEqual(nextDstEnd(utc('2027-10-31T01:00:00Z')), utc('2028-10-29T01:00:00Z'));
+  assert.deepEqual(nextDstEnd(utc('2027-10-31T01:00:01Z')), utc('2028-10-29T01:00:00Z'));
+});
+
+test('nextDstEnd da gennaio e da giugno dello stesso anno', () => {
+  assert.deepEqual(nextDstEnd(utc('2027-01-01T00:00:00Z')), utc('2027-10-31T01:00:00Z'));
+  assert.deepEqual(nextDstEnd(utc('2027-06-01T12:00:00Z')), utc('2027-10-31T01:00:00Z'));
+});
